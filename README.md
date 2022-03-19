@@ -3,11 +3,11 @@
 I enjoy testing various macOS/iOS beta apps via Apple's [TestFlight](https://developer.apple.com/testflight/) program.
 
 
-Apple currently caps the beta users to 10k, which led me to create this tool. This script checks TestFlight beta apps and alert you when there's open slots for a given list of apps. 
+Apple currently caps the beta users to 10k, which led me to create this tool. This script checks TestFlight beta apps and alert you when there's open slots for a given list of apps.
 
-<img src="/notification.png" width=50%>
+<img src="/notification.png" width=25%>
 
-####Prepare TestFlight apps
+#### Prepare TestFlight apps
 Search online for the app TestFlight invitation URL and extactt the code.
 
 E.g. [Slack](https://slack.com/beta/ios) TestFlight invitation URL is:
