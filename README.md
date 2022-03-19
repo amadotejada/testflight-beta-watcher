@@ -9,7 +9,8 @@ Apple currently caps the beta users to 10k per app, which led me to create this 
 #### Prepare TestFlight apps
 Search online for the app TestFlight invitation URL.
 
-E.g. [Slack](https://slack.com/beta/ios) TestFlight invitation URL is:
+E.g.
+[Slack](https://slack.com/beta/ios) TestFlight invitation URL is:
  `https://testflight.apple.com/join/QE3kgqJ2`
 
 ```json
@@ -34,7 +35,7 @@ In `send_push_alert()`:
 
 Set up a service or cron to run the script at an interval
 
-E.g.:
+E.g.
 `0 */6 * * * python3 testflight-beta-watcher.py`
 
 ##
