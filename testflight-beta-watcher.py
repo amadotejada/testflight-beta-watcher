@@ -19,13 +19,13 @@ def check_beta():
         print(f"Checking: {app} beta")
         resp = requests.get(f"{url}/{code}")
         if resp.ok:
-            if "beta is full" not in resp.text:
-                if not os.path.exists(tmpfile):
+            if "beta is full" in resp.text:
+                if os.path.isfile(tmpfile):
+                    os.remove(tmpfile)
+            else:
+                if not os.path.isfile(tmpfile):
                     send_push_alert(app, code, url)
                     open(tmpfile, "a").close()
-            else:
-                if os.path.exists(tmpfile):
-                    os.remove(tmpfile)
         else:
             print(f"\n{app} not found, {resp.status_code}")
 
