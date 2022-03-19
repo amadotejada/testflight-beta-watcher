@@ -2,7 +2,9 @@
 
 I enjoy testing various macOS/iOS beta apps via Apple's [TestFlight](https://developer.apple.com/testflight/) program.
 
-Apple currently caps the beta users to 10k per app, which led me to create this tool. This script checks TestFlight beta apps and alerts you when there's open slots for a given list of apps.
+Apple currently caps the beta users to 10k per app, which led me to create this tool.
+
+This script checks TestFlight beta apps and alerts you when there's open slots for a given list of apps.
 
 <img src="/notification.png" width=50%>
 
