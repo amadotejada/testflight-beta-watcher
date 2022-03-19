@@ -6,7 +6,6 @@ Apple currently caps the beta users to 10k per app, which led me to create this 
 
 This script checks TestFlight beta apps and alerts you when there's open slots for a given list of apps.
 
-<a>![test](/notification.png)</a>
 <img src="/notification.png" width=50%>
 
 #### Prepare TestFlight apps
