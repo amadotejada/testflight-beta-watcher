@@ -1,10 +1,16 @@
 import os
+from datetime import datetime
 
+import pytz
 import requests
+
+date = datetime.now(pytz.timezone("America/New_York"))
+time12hr = date.strftime("%Y-%m-%d %I:%M:%S %p")
 
 home = os.path.expanduser("~")
 url = "https://testflight.apple.com/join/"
 apps = {
+    "WhatsApp": "s4rTJVPb",
     "Slack": "QE3kgqJ2",
     "Discord": "gdE4pRzI",
     "ProtonMail": "8SxXknzD",
@@ -15,31 +21,29 @@ apps = {
 
 def check_beta():
     for app, code in apps.items():
-        tmpfile = f"{home}/.{app}"
-        print(f"Checking: {app} beta")
+        tmpfile = f"{home}/testflight-beta-watcher.log"
+        print(f"\nChecking: {app}")
         resp = requests.get(f"{url}/{code}")
+        print(f"Status: {resp.status_code}")
         if resp.ok:
-            if "beta is full" in resp.text:
-                if os.path.isfile(tmpfile):
-                    os.remove(tmpfile)
+            if "Join the Beta" in resp.text:
+                send_push_alert(app, code, url)
+                open(tmpfile, "a").write(f"\n{time12hr} -- ✅ Found ✅: {app, url+code}")
             else:
-                if not os.path.isfile(tmpfile):
-                    send_push_alert(app, code, url)
-                    open(tmpfile, "a").close()
-        else:
-            print(f"\n{app} not found, {resp.status_code}")
+                open(tmpfile, "a").write(f"\n{time12hr} -- ⛔️ Unavailable ⛔️: {app}")
 
 
 def send_push_alert(app, code, url):
-    resp = requests.post(
+    requests.post(
         "https://api.pushover.net/1/messages.json",
         data={
             "token": "{}",
-            "user": "{}",
-            "message": f"{app} Beta is available!\n{url+code}",
+            "user": "{}}",
+            "message": f"✅ {app} Beta is available! ✅\n{url+code}",
         },
     )
-    print(resp.text)
+    print(f"{time12hr} -- ✅ Found ✅: {app, url+code}")
 
 
-check_beta()
+if __name__ == '__main__':
+    check_beta()
