@@ -38,7 +38,7 @@ def send_push_alert(app, code, url):
         "https://api.pushover.net/1/messages.json",
         data={
             "token": "{}",
-            "user": "{}}",
+            "user": "{}",
             "message": f"✅ {app} Beta is available! ✅\n{url+code}",
         },
     )
